@@ -10,6 +10,7 @@ Index
 05. Utility Classes
 06. Header
 07. Banner
+08. About
 
 
 */
@@ -38,6 +39,7 @@ Index
     --neutral-color: #f0f0f0;
     --overlay-content-color: #fff;
     --btn-secondary-bg: #fff;
+    --text-color-gray: #757575;
 }
 
 ul{
@@ -212,7 +214,7 @@ body{
 .btn-primary, .btn-secondary {
 	border-radius: 15px;
 	display: inline-block;
-	padding: 15px 25px;
+	padding: 10px 25px;
 	font-size: 18px;
     position: relative;
     z-index: 2;
@@ -240,6 +242,7 @@ body{
 .btn-primary:hover::before{
     width: 100%; 
     height: 100%;
+	border: 0;
 }
 .btn-primary:hover{
     color: var(--primary-color);
@@ -251,6 +254,12 @@ body{
 }
 .d-inline-flex{
     display: inline-flex;
+}
+.flex-wrap{
+    flex-wrap: wrap;
+}
+.flex-no-wrap{
+    flex-wrap: nowrap;
 }
 
 .gap-0{
@@ -428,7 +437,9 @@ body{
 
 /* 06. Header */
 .header-area{
-    position: relative;
+    position: absolute;
+    right: 0;
+    left: 0;
     z-index: 999;
 }
 .header-top-area{
@@ -613,9 +624,7 @@ body{
 	width: 100%;
 	height: 100vh;
 
-	position: absolute;
-	top: 0;
-	left: 0;
+	position: relative;
     z-index: 20;
 }
 .bg::before {
@@ -638,4 +647,67 @@ body{
 }
 .banner-content p{
 	width: 650px;
+}
+
+/* 08. About */
+.about-img {
+	border: 50px solid;
+	border-color: transparent var(--primary-color) transparent var(--primary-color);
+}
+.about-content {
+	padding-left: 30px;
+}
+.about-title h5 {
+	color: var(--primary-color);
+	font-size: 22px;
+	text-transform: uppercase;
+
+    position: relative;
+    display: inline-block;
+}
+.about-title h5::before {
+	content: "";
+    
+	position: absolute;
+	top: 50%;
+	left: 100%;
+	transform: translateY(-50%);
+
+	width: 60px;
+	height: 2px;
+	background: var(--primary-color);
+	margin-left: 15px;
+}
+
+.about-title h2 {
+	font-size: 35px;
+}
+.about-title span.brand-name{
+    color: var(--primary-color);
+}
+.about-title span.tagline {
+	display: block;
+	font-size: 14px;
+	color: var(--text-color-gray);
+}
+.about-title p{
+    color: var(--text-color-gray);
+    margin: 40px 0;
+}
+.about-features li {
+	color: var(--text-color-gray);
+	flex-basis: 315px;
+	padding-left: 25px;
+
+	position: relative;
+}
+.about-features li::before{
+    content: "\f061";
+    font-family: "Font Awesome 5 free";
+    font-weight: 700;
+    color: var(--primary-color);
+
+    position: absolute;
+    top: 0;
+    left: 0;
 }
