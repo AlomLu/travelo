@@ -8,6 +8,9 @@ Index
 03. Typography
 04. Global Elements
 05. Utility Classes
+06. Header
+07. Banner
+
 
 */
 
@@ -23,21 +26,29 @@ Index
     scroll-behavior: smooth;
 }
 :root{
-    --primary-color: #ff3636;
-    --bg1: #FBFDF9;
-    --bg2: #FEF7F4;
-    --btn-primary-hover: #4CC5AF;
+    --primary-color: #13357b;
+    --bg-color-1: #FBFDF9;
+    --bg-color-2: #FEF7F4;
+    --btn-primary-hover: #F2F2F2;
     --btn-secondary-hover: #008080;
     --text-color: #333;
-    --link-color: #333;
+    --link-color-primary: #F2F2F2;
+    --link-color-secondary: #333;
+    --link-hover-color: #ff3636;
+    --neutral-color: #f0f0f0;
+    --overlay-content-color: #fff;
+    --btn-secondary-bg: #fff;
 }
+
 ul{
     list-style: none;
 }
 a{
     text-decoration: none;
-    color: var(--link-color);
+    color: var(--link-color-primary);
     font-weight: 500;
+    transition: .3s ease-in-out;
+    text-transform: capitalize;
 }
 img{
     max-width: 100%;
@@ -75,6 +86,12 @@ body{
 }
 .w-100{
     width: 100%;
+}
+.pt-10{
+    padding-top: 10px;
+}
+.pb-10{
+    padding-bottom: 10px;
 }
 .pt-15{
     padding-top: 15px;
@@ -186,26 +203,129 @@ body{
     margin-bottom: 80px;
 }
 
-.row{
-    display: flex;
-    flex-wrap: wrap;
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 -15px;
 }
 
-.btn-primary{
-    background-color: var(--primary-color);
-    color: #fff;
-    border-radius: 5px;
-    display: inline-block;
+.btn-primary, .btn-secondary {
+	border-radius: 15px;
+	display: inline-block;
+	padding: 15px 25px;
+	font-size: 18px;
+    position: relative;
+    z-index: 2;
+}
+.btn-primary {
+	background-color: var(--primary-color);
+	color: #F2F2F2;
 }
 .btn-secondary{
-    background-color: #fff;
+    background-color: var(--btn-secondary-bg);
     color: #333;
-    border-radius: 5px;
-    display: inline-block;
 }
+.btn-primary::before{
+	position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    background-color: var(--btn-primary-hover);
+    z-index: -2;
+	border-radius: 15px;
+    transition: .3s ease-in-out;
+}
+.btn-primary:hover::before{
+    width: 100%; 
+    height: 100%;
+}
+.btn-primary:hover{
+    color: var(--primary-color);
+}
+
 
 .d-flex{
     display: flex;
+}
+.d-inline-flex{
+    display: inline-flex;
+}
+
+.gap-0{
+    gap: 0px;
+}
+.gap-8{
+    gap: 8px;
+}
+.gap-12{
+    gap: 12px;
+}
+.gap-16{
+    gap: 16px;
+}
+.gap-20{
+    gap: 20px;
+}
+.gap-24{
+    gap: 24px;
+}
+.gap-28{
+    gap: 28px;
+}
+.gap-32{
+    gap: 32px;
+}
+
+.gap-x-0{
+    row-gap: 0px;
+}
+.gap-x-8{
+    row-gap: 8px;
+}
+.gap-x-12{
+    row-gap: 12px;
+}
+.gap-x-16{
+    row-gap: 16px;
+}
+.gap-x-20{
+    row-gap: 20px;
+}
+.gap-x-24{
+    row-gap: 24px;
+}
+.gap-x-28{
+    row-gap: 28px;
+}
+.gap-x-32{
+    row-gap: 32px;
+}
+
+.gap-y-0{
+    column-gap: 0px;
+}
+.gap-y-8{
+    column-gap: 8px;
+}
+.gap-y-12{
+    column-gap: 12px;
+}
+.gap-y-16{
+    column-gap: 16px;
+}
+.gap-y-20{
+    column-gap: 20px;
+}
+.gap-y-24{
+    column-gap: 24px;
+}
+.gap-y-28{
+    column-gap: 28px;
+}
+.gap-y-32{
+    column-gap: 32px;
 }
 
 .flex-row{
@@ -243,10 +363,10 @@ body{
 .align-items-start{
     align-items: start;
 }
-.align-items{
+.align-items-center{
     align-items: center;
 }
-.align-end{
+.align-items-end{
     align-items: end;
 }
 
@@ -304,4 +424,218 @@ body{
 .container{
     width: 1170px;
     margin: 0 auto;
+}
+
+/* 06. Header */
+.header-area{
+    position: relative;
+    z-index: 999;
+}
+.header-top-area{
+    background-color: var(--primary-color);
+}
+
+/* Header Social Links */
+.header-social-links li a {
+	color: var(--primary-color);
+	background-color: var(--bg-color-1);
+	text-align: center;
+
+	height: 25px;
+	width: 25px;
+	line-height: 25px;
+	border-radius: 50%;
+
+	display: inline-block;
+}
+.header-social-links li a:hover, .log-in-area li a:hover, .logo:hover, .menu-item li a:hover{
+    color: var(--link-hover-color);
+}
+
+/* Position relative for login and menu items */
+.log-in-area li, .menu-item li{
+    position: relative;
+}
+
+/* Dropdown menus: hidden by default, appear on hover with slide-in animation */
+.dashboard, .submenu{
+	background-color: var(--primary-color);
+
+	padding: 20px 0;
+
+	position: absolute;
+    top:25px;
+	right: 0;
+    z-index: 999;
+
+	opacity: 0;
+	transform: translateX(-10px);
+	visibility: hidden;
+
+	transition: transform .3s ease-in-out, opacity .3s ease-in-out;
+}
+.dashboard{
+	top:25px;
+	width: 210px;
+}
+.submenu {
+	top: 38px;
+	width: 400px;
+	flex-wrap: wrap;
+}
+.log-in-area li:hover .dashboard, .menu-item li:hover .submenu{
+    opacity: 1;
+    transform: translateX(0);
+    visibility: visible;
+}
+
+.log-in-area li a i {
+  margin-right: 15px;
+}
+
+/* Header main */
+.header-main {
+	border-bottom: 1px solid #808080;
+}
+.logo, .menu-item li a {
+    color: var(--overlay-content-color);
+}
+.logo i {
+	font-size: 35px;
+	margin-right: 15px;
+}
+.logo h4 {
+	font-size: 30px;
+}
+
+/* Menu links background: hidden by default, appears on hover with slide-in animation */
+.menu-item li a {
+	padding: 46px 15px 46px;
+	position: relative;
+	z-index: 2;
+}
+.menu-item li a::before {
+    background-color: var(--primary-color);
+    
+	width: 100%;
+	height: 0;
+
+	position: absolute;
+	bottom: 0;
+	left: 0;
+    z-index: -2;
+	content: "";
+
+    visibility: hidden;
+
+    transition: .3s ease-in-out;
+}
+.menu-item li a:hover::before{
+    height: 100%;
+    visibility: visible;
+}
+
+/* Animated background effect for active menu link on hover */
+.menu-item li a.active {
+	background: var(--primary-color);
+	padding: 12px 25px;
+	border-radius: 15px;
+    margin-left: 15px;
+}
+.menu-item li a.active::before {
+	position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    background-color: var(--btn-primary-hover);
+    z-index: -2;
+	border-radius: 15px;
+    transition: .3s ease-in-out;
+}
+.menu-item li a.active:hover::before{
+    width: 100%; 
+    height: 100%;
+}
+.menu-item li a.active:hover{
+    color: var(--primary-color);
+}
+
+.menu-item li a i {
+	margin-left: 5px;
+}
+
+/* Dropdown menu links background: hidden by default, appear on hover with slide-in animation */
+.dashboard li a, .submenu li a {
+    padding: 10px 15px !important;
+    
+	display: block;
+	position: relative;
+	z-index: 2;
+}
+.dashboard li a::before, .submenu li a::before{
+	background-color: var(--btn-secondary-hover);
+    border-radius: 5px;
+
+	width: 100%;
+	height: 100%;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -2;
+	content: "";
+
+    transform: scale(0);
+    transform-origin: right;
+
+    transition: transform 0.5s ease-in-out;
+}
+.dashboard li a:hover::before, .submenu li a:hover::before{
+    transform: scale(1);
+}
+.dashboard li a:hover, .submenu li a:hover{
+    color: var(--link-color);
+}
+
+.submenu li {
+	width: 49%;
+}
+
+/* 07. Banner */
+.bg {
+    color: var(--overlay-content-color);
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+
+	width: 100%;
+	height: 100vh;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+    z-index: 20;
+}
+.bg::before {
+	background-color: #333;
+	opacity: 0.6;
+
+	width: 100%;
+	height: 100%;
+
+	position: absolute;
+	top: 0;
+    z-index: -2;
+	content: "";
+}
+.banner-content h4 {
+    font-size: 25px;
+}
+.banner-content h1 {
+    font-size: 55px;
+}
+.banner-content p{
+	width: 650px;
 }
