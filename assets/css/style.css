@@ -11,6 +11,7 @@ Index
 06. Header
 07. Banner
 08. About
+09. Services
 
 
 */
@@ -28,6 +29,7 @@ Index
 }
 :root{
     --primary-color: #13357b;
+    --secondary-color: #f4b942;
     --bg-color-1: #FBFDF9;
     --bg-color-2: #FEF7F4;
     --btn-primary-hover: #F2F2F2;
@@ -106,6 +108,12 @@ body{
 }
 .pb-20{
     padding-bottom: 20px;
+}
+.pt-25{
+    padding-top: 25px;
+}
+.pb-25{
+    padding-bottom: 25px;
 }
 .pt-30{
     padding-top: 30px;
@@ -205,12 +213,6 @@ body{
     margin-bottom: 80px;
 }
 
-.row {
-	display: flex;
-	flex-wrap: wrap;
-	margin: 0 -15px;
-}
-
 .btn-primary, .btn-secondary {
 	border-radius: 15px;
 	display: inline-block;
@@ -248,7 +250,52 @@ body{
     color: var(--primary-color);
 }
 
+/* Section Title */
+.section-title {
+  text-align: center;
+}
+.section-title h5 {
+  display: inline-block;
+  font-size: 25px;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  position: relative;
+}
+.section-title h5::before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 100%;
+    transform: translateY(-50%);
+	margin-left: 15px;
+    
+	height: 2px;
+	width: 60px;
 
+	background-color: var(--primary-color);
+}
+.section-title h5::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	right: 100%;
+    transform: translateY(-50%);
+	margin-right: 15px;
+
+	width: 60px;
+	height: 2px;
+    
+	background-color: var(--primary-color);
+}
+.section-title h4 {
+	font-size: 35px;
+}
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 -15px;
+}
 .d-flex{
     display: flex;
 }
@@ -659,8 +706,7 @@ body{
 }
 .about-title h5 {
 	color: var(--primary-color);
-	font-size: 22px;
-	text-transform: uppercase;
+	font-size: 25px;
 
     position: relative;
     display: inline-block;
@@ -710,4 +756,70 @@ body{
     position: absolute;
     top: 0;
     left: 0;
+}
+
+/* 09. Services */
+.services-area{
+    background-color: var(--bg-color-1);
+}
+.service {
+	padding: 30px;
+	box-shadow: 5px 5px 4px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow .3s ease-in-out;
+    position: relative;
+}
+.service:hover {
+	box-shadow: 5px 5px #333;
+}
+.service::before, .service::after {
+	position: absolute;
+	content: "";
+	top: 0;
+	left: 0;
+
+	width: 2px;
+	height: 0;
+
+	background-color: var(--primary-color);
+    visibility: hidden;
+
+    transition: .3s ease-in-out;
+}
+.service::before {
+	width: 2px;
+}
+.service::after {
+	height: 2px;
+}
+.service:hover::before{
+    height: 100%;
+    visibility: visible;
+}
+.service:hover::after{
+    width: 100%;
+    visibility: visible;
+}
+.service i {
+	font-size: 25px;
+	color: var(--primary-color);
+	position: absolute;
+	top: -25px;
+	left: 50%;
+	height: 50px;
+	width: 115px;
+	line-height: 50px;
+	text-align: center;
+	background-color: var(--secondary-color);
+	transform: translateX(-50%);
+	color: #fff;
+    z-index: 999;
+    transition: color .3s ease-in-out, transform .4s ease-in-out;
+    /* transition: .3s ease-in-out; */
+}
+.service:hover i{
+    color: var(--primary-color);
+    transform: translateX(-55%);
+}
+.service h5{
+    font-size: 18px;
 }
