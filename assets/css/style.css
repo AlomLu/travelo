@@ -8,10 +8,11 @@ Index
 03. Typography
 04. Global Elements
 05. Utility Classes
-06. Header
-07. Banner
-08. About
-09. Services
+06. Layout: Header
+07. Layout: Banner
+08. Layout: About
+09. Layout: Services
+10. Layout: Destination
 
 
 */
@@ -40,7 +41,7 @@ Index
     --link-hover-color: #ff3636;
     --neutral-color: #f0f0f0;
     --overlay-content-color: #fff;
-    --btn-secondary-bg: #fff;
+    --btn-secondary-bg: #f2f2f2;
     --text-color-gray: #757575;
 }
 
@@ -158,6 +159,12 @@ body{
     padding-bottom: 80px;
 }
 
+.mt-10{
+    margin-top: 10px;
+}
+.mb-10{
+    margin-bottom: 10px;
+}
 .mt-15{
     margin-top: 15px;
 }
@@ -213,41 +220,76 @@ body{
     margin-bottom: 80px;
 }
 
-.btn-primary, .btn-secondary {
+.btn-primary, .btn-secondary, .btn-tertiary {
 	border-radius: 15px;
 	display: inline-block;
-	padding: 10px 25px;
 	font-size: 18px;
     position: relative;
     z-index: 2;
 }
-.btn-primary {
+
+.btn-primary, .btn-secondary {
+	padding: 10px 25px;
+}
+.btn-tertiary{
+    padding: 5px 15px;
+}
+.btn-primary, .btn-tertiary {
 	background-color: var(--primary-color);
 	color: #F2F2F2;
 }
+
 .btn-secondary{
     background-color: var(--btn-secondary-bg);
     color: #333;
 }
+
+.btn-primary::before, .btn-tertiary::before{
+	position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    background-color: var(--btn-primary-hover);
+    z-index: -2;
+	border-radius: 15px;
+    transition: .3s ease-in-out;
+}
 .btn-primary::before{
+    width: 0;
+    height: 0;
+}
+.btn-tertiary::before{
+    width: 0;
+    height: 100%;
+}
+
+.btn-secondary::before{
 	position: absolute;
     content: "";
     top: 0;
     left: 0;
     width: 0;
     height: 0;
-    background-color: var(--btn-primary-hover);
+    background-color: var(--primary-color);
     z-index: -2;
 	border-radius: 15px;
     transition: .3s ease-in-out;
 }
-.btn-primary:hover::before{
+
+.btn-primary:hover::before, .btn-secondary:hover::before{
     width: 100%; 
     height: 100%;
-	border: 0;
 }
-.btn-primary:hover{
+.btn-tertiary:hover::before{
+    width: 100%; 
+}
+
+.btn-primary:hover, .btn-tertiary:hover{
     color: var(--primary-color);
+}
+
+.btn-secondary:hover{
+    color: var(--link-color-primary);
 }
 
 /* Section Title */
@@ -482,7 +524,7 @@ body{
     margin: 0 auto;
 }
 
-/* 06. Header */
+/* 06. Layout: Header */
 .header-area{
     position: absolute;
     right: 0;
@@ -661,7 +703,7 @@ body{
 	width: 49%;
 }
 
-/* 07. Banner */
+/* 07. Layout: Banner */
 .bg {
     color: var(--overlay-content-color);
 	background-position: center;
@@ -696,7 +738,7 @@ body{
 	width: 650px;
 }
 
-/* 08. About */
+/* 08. Layout: About */
 .about-img {
 	border: 50px solid;
 	border-color: transparent var(--primary-color) transparent var(--primary-color);
@@ -758,7 +800,7 @@ body{
     left: 0;
 }
 
-/* 09. Services */
+/* 09. Layout: Services */
 .services-area{
     background-color: var(--bg-color-1);
 }
@@ -814,7 +856,6 @@ body{
 	color: #fff;
     z-index: 999;
     transition: color .3s ease-in-out, transform .4s ease-in-out;
-    /* transition: .3s ease-in-out; */
 }
 .service:hover i{
     color: var(--primary-color);
@@ -822,4 +863,106 @@ body{
 }
 .service h5{
     font-size: 18px;
+}
+
+/* 10. Layout: Destination */
+.destination-country li a.active {
+	background-color: var(--primary-color);
+    color: var(--link-color-primary);
+}
+.destination-country li a.active.btn-secondary::before{
+    display: none;
+}
+
+.destination-img {
+	position: relative;
+    overflow: hidden;
+}
+.destination-img img{
+    transform: scale(1);
+    transition: transform .3s ease-in-out;
+}
+.destination-img img:hover{
+     transform: scale(1.1);
+}
+
+/* Destination Content: hidden by default, appears on hover with slide in animations */
+.destination-content {
+	position: absolute;
+	bottom: 0;
+	left: 40px;
+	color: var(--link-color-primary);
+	text-align: center;
+    visibility: hidden;
+    transition: bottom .3s ease-in-out;
+}
+.destination-img:hover .destination-content{
+    visibility: visible;
+    bottom: 40px;
+}
+
+.destination-content h4 {
+	font-size: 22px;
+	margin: 5px 0;
+}
+
+/* View image: hidden by default, appears on hover with animations*/
+.view-img {
+	position: absolute;
+	content: "";
+	top: 15px;
+	right: 30px;
+
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	border-radius: 50%;
+
+	color: var(--primary-color);
+	background-color: var(--link-color-primary);
+    z-index: 2;
+    transition: right .3s ease-in-out;
+    visibility: hidden;
+}
+.destination-img:hover  a.view-img{
+    visibility: visible;
+	right: 15px;
+}
+.view-img::before{
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    transition: .3s ease-in-out;
+    visibility: hidden;
+    border: 1px solid var(--link-color-primary);
+    z-index: -2;
+}
+.view-img:hover::before{
+    visibility: visible;
+    width: 100%;
+}
+.view-img:hover{
+    color: var(--link-color-primary);
+}
+
+/* Destination Image Overlay*/
+.destination-img::before {
+	position: absolute;
+	content: "";
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #333;
+	opacity: .5;
+}
+
+.destination-content a.view-places:hover{
+    color: var(--secondary-color);
 }
