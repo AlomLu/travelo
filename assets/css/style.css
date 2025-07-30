@@ -13,6 +13,7 @@ Index
 08. Layout: About
 09. Layout: Services
 10. Layout: Destination
+11. Layout: Explore Tour
 
 
 */
@@ -331,6 +332,20 @@ body{
 }
 .section-title h4 {
 	font-size: 35px;
+}
+.section-title p {
+	width: 85%;
+	margin: 0 auto;
+	margin-top: 15px;
+}
+
+/* Section Filters */
+.section-filters li a.active {
+	background-color: var(--primary-color);
+    color: var(--link-color-primary);
+}
+.section-filters li a.active.btn-secondary::before{
+    display: none;
 }
 
 .row {
@@ -866,14 +881,6 @@ body{
 }
 
 /* 10. Layout: Destination */
-.destination-country li a.active {
-	background-color: var(--primary-color);
-    color: var(--link-color-primary);
-}
-.destination-country li a.active.btn-secondary::before{
-    display: none;
-}
-
 .destination-img {
 	position: relative;
     overflow: hidden;
@@ -965,4 +972,89 @@ body{
 
 .destination-content a.view-places:hover{
     color: var(--secondary-color);
+}
+
+/* 11. Layout: Explore Tour */
+
+.tour-category {
+  position: relative;
+  overflow: hidden;
+  	border-radius: 15px;
+}
+.tour-category img {
+	transform: scale(1);
+	transition: transform .3s ease-in-out;
+	position: relative;
+	z-index: 1;
+	border-radius: 15px;
+}
+.tour-category img:hover{
+    transform: scale(1.2);
+}
+
+.tour-category::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  opacity: 0.5;
+  z-index: 2;
+  pointer-events: none;
+  visibility: hidden;
+  transition: .3s ease-in-out;
+}
+.tour-category:hover::before{
+    visibility: visible;
+}
+
+.tour-category-content {
+  position: absolute;
+  left: 50%;
+  bottom: 15px;
+  transform: translateX(-50%);
+  z-index: 999;
+}
+.tour-category-content h4 {
+  font-size: 24px;
+  color: var(--link-color-primary);
+}
+.tour-category-content a {
+  color: var(--link-color-primary);
+}
+.tour-category-content a:hover{
+    color: var(--secondary-color);
+}
+
+a.camera i{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  color: var(--link-color-primary);
+  font-size: 25px;
+}
+.tour-category:hover a.camera i{
+    opacity: 1;
+    visibility: visible;
+}
+
+.discount {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 99;
+	width: 100px;
+	height: 85px;
+	background-color: var(--btn-secondary-hover);
+	padding: 20px;
+	border-radius: 0px 37px 0px 62px;
+	color: var(--link-color-primary);
+	font-size: 16px;
 }
