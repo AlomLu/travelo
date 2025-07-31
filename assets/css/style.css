@@ -13,7 +13,8 @@ Index
 08. Layout: About
 09. Layout: Services
 10. Layout: Destination
-11. Layout: Explore Tour
+11. Layout: Explore Tour 
+12. Layout: Packages
 
 
 */
@@ -1057,4 +1058,145 @@ a.camera i{
 	border-radius: 0px 37px 0px 62px;
 	color: var(--link-color-primary);
 	font-size: 16px;
+}
+
+/* 12. Layout: Packages */
+
+.package-img {
+	position: relative;
+	overflow: hidden;
+	border-radius: 20px 20px 0 0;
+}
+
+/* Overlay Effect: hidden by default, expands with a slide-in animation on hover */
+.package-img::before {
+	position: absolute;
+	content: "";
+	top: 50%;
+	left: 50%;
+	border: 0 solid;
+	z-index: 33;
+	transform: translate(-50%, -50%);
+    transition: .75s;
+    border-radius: 10px;
+    z-index: 3;
+    visibility: hidden;
+}
+.package-img:hover::before{
+    border: 300px solid;
+    border-color: var(--primary-color);;
+    visibility: visible;
+    opacity: .5;
+}
+
+/* Image zoom-in effect: scales up smoothly on hover */
+.package-img img {
+  transform: scale(1.1);
+  transition: transform .3s ease-in-out;
+}
+.package-img:hover img {
+  transform: scale(1.3);
+}
+
+.package-contetn {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	border-top: 1px solid;
+    z-index: 3;
+    color: var(--link-color-primary);
+}
+.package-contetn::before {
+	position: absolute;
+	content: "";
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: var(--link-color-secondary);
+	opacity: 0.3;
+	z-index: -2;
+}
+
+.package-contetn li {
+	padding: 10px 10px;
+	border-right: 1px solid;
+}
+.package-contetn li:last-child{
+    border-right: 0;
+}
+.package-contetn i {
+  font-size: 15px;
+  margin-right: 8px;
+}
+.package-contetn span {
+  font-size: 15px;
+}
+
+.price {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: var(--primary-color);
+	padding: 7px 22px;
+	color: var(--link-color-primary);
+	display: inline-block;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+    z-index: 4;
+}
+
+/* Left corner triangle for the price label */
+.price::before {
+	position: absolute;
+	content: "";
+	top: 0;
+	left: 100%;
+	width: 0;
+	height: 0;
+	border-width: 8px 0 0 8px;
+	border-color: transparent transparent transparent var(--primary-color) ;
+	border-style: solid;
+}
+
+/* Right corner triangle for the price label */
+.price::after {
+	position: absolute;
+	content: "";
+	top: 0;
+	right: 100%;
+	width: 0;
+	height: 0;
+	border-width: 8px 8px 0 0;
+	border-color: transparent var(--primary-color) transparent transparent;
+	border-style: solid;
+}
+
+.package-details {
+  background-color: var(--btn-secondary-bg);
+  padding: 30px;
+}
+.package-details h4 {
+  font-size: 25px;
+}
+.package-details h4 span {
+  display: block;
+  font-size: 17px;
+  color: #757575;
+  font-weight: 500;
+}
+.package-btn {
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: space-between;
+}
+.package-btn {
+	background-color: var(--primary-color);
+	display: flex;
+	justify-content: space-between;
+	padding: 12px 20px;
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
 }
